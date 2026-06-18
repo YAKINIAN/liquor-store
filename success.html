@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success | Liquor Store</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style/checkout.css">
+    <link rel="stylesheet" href="style/responsive.css">
+    <link rel="stylesheet" href="style/theme.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        .success-page-container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .success-animation-wrap {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+        }
+        
+        .checkmark-svg {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 4;
+            stroke: var(--gold);
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px var(--gold);
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+        .checkmark-circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 4;
+            stroke-miterlimit: 10;
+            stroke: var(--gold);
+            fill: none;
+            animation: stroke .6s cubic-bezier(0.650, 0.000, 0.450, 1.000) forwards;
+        }
+        .checkmark-check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            stroke: #070707;
+            animation: stroke .3s cubic-bezier(0.650, 0.000, 0.450, 1.000) .8s forwards;
+        }
+
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        @keyframes scale {
+            0%, 100% { transform: none; }
+            50% { transform: scale3d(1.15, 1.15, 1); }
+        }
+        @keyframes fill {
+            100% { box-shadow: inset 0px 0px 0px 50px var(--gold); }
+        }
+
+        /* Fade-in stagger animations */
+        .success-box.theme-card {
+            animation: fadeInUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+        }
+        
+        .anim-delay-1 { animation-delay: 0.2s; }
+        .anim-delay-2 { animation-delay: 0.4s; }
+        .anim-delay-3 { animation-delay: 0.6s; }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease both;
+        }
+        
+        .receipt-box {
+            background: rgba(15, 15, 15, 0.5) !important;
+            border: 1px solid rgba(212, 175, 55, 0.15) !important;
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .receipt-box:hover {
+            border-color: rgba(212, 175, 55, 0.35) !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(212,175,55,0.05);
+        }
+        
+        .invoice h3 {
+            font-family: Georgia, serif !important;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--gold) !important;
+            margin-bottom: 20px;
+        }
+        
+        /* Sparkle particles */
+        .sparkle-container {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            overflow: visible;
+            z-index: 5;
+        }
+        .sparkle {
+            position: absolute;
+            background: var(--gold);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle-shoot 0.8s ease-out forwards;
+        }
+        
+        @keyframes sparkle-shoot {
+            0%   { transform: translate(0,0) scale(0); opacity: 1; }
+            100% { transform: translate(var(--x), var(--y)) scale(1); opacity: 0; }
+        }
+
+        /* ── Thermal Receipt ─────────────────────────────── */
+        .rc-wrap {
+            font-family: 'Courier New', Courier, monospace;
+            background: #0a0a0a;
+            border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 4px;
+            padding: 32px 28px;
+            max-width: 380px;
+            margin: 0 auto;
+            color: #e0e0e0;
+            position: relative;
+            box-shadow: 0 0 40px rgba(184,134,11,0.08), 0 20px 60px rgba(0,0,0,0.6);
+        }
+        .rc-wrap::before, .rc-wrap::after {
+            content: "";
+            display: block;
+            height: 10px;
+            background: repeating-linear-gradient(90deg, #1a1a1a 0 6px, #111 6px 12px);
+            margin: -32px -28px 24px;
+            border-radius: 4px 4px 0 0;
+        }
+        .rc-wrap::after {
+            margin: 24px -28px -32px;
+            border-radius: 0 0 4px 4px;
+        }
+        .rc-header { text-align: center; margin-bottom: 4px; }
+        .rc-logo-emoji { font-size: 42px; line-height: 1; }
+        .rc-brand {
+            font-size: 22px; font-weight: 900; letter-spacing: 5px;
+            color: #d4af37; margin-top: 6px; font-family: Georgia, serif;
+        }
+        .rc-tagline { font-size: 9px; letter-spacing: 3px; color: #666; margin-top: 3px; }
+
+        .rc-dash {
+            border-top: 1px dashed rgba(255,255,255,0.12);
+            margin: 12px 0;
+        }
+
+        .rc-storeinfo {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 2px; font-size: 11px; color: #777; line-height: 1.9;
+        }
+
+        .rc-meta-table { width: 100%; font-size: 12px; border-collapse: collapse; }
+        .rc-meta-label { color: #666; padding: 2px 0; }
+        .rc-meta-val   { text-align: right; font-weight: 700; color: #ddd; }
+
+        .rc-items-table { width: 100%; border-collapse: collapse; }
+        .rc-th-left   { text-align: left;   font-size: 10px; color: #555; font-weight: 700; padding-bottom: 6px; letter-spacing: 1px; }
+        .rc-th-center { text-align: center; font-size: 10px; color: #555; font-weight: 700; padding-bottom: 6px; letter-spacing: 1px; }
+        .rc-th-right  { text-align: right;  font-size: 10px; color: #555; font-weight: 700; padding-bottom: 6px; letter-spacing: 1px; }
+        .rc-item-name  { font-size: 13px; padding: 4px 8px 4px 0; color: #ccc; }
+        .rc-item-qty   { text-align: center; font-size: 13px; color: #888; white-space: nowrap; }
+        .rc-item-price { text-align: right; font-size: 13px; font-weight: 700; color: #ddd; white-space: nowrap; padding-left: 8px; }
+
+        .rc-totals-table { width: 100%; border-collapse: collapse; font-size: 12px; color: #777; }
+        .rc-tot-right    { text-align: right; }
+        .rc-total-divider { border-top: 1.5px solid rgba(255,255,255,0.15); margin: 8px 0; }
+        .rc-grand-label { font-size: 15px; font-weight: 900; color: #ddd; }
+        .rc-grand-val   { text-align: right; font-size: 15px; font-weight: 900; color: #d4af37; }
+
+        .rc-pay-head { font-size: 11px; font-weight: 800; letter-spacing: 2px; color: #999; margin-bottom: 8px; }
+        .rc-pay-grid {
+            display: grid; grid-template-columns: auto 1fr;
+            gap: 2px 12px; font-size: 12px; align-items: start;
+        }
+        .rc-pay-key     { color: #555; white-space: nowrap; }
+        .rc-pay-val     { color: #ccc; }
+        .rc-pay-receipt { color: #d4af37 !important; font-weight: 600; }
+
+        .rc-qr-section { text-align: center; padding: 6px 0; }
+        .rc-qr-section img,
+        .rc-qr-section canvas { display: block; margin: 0 auto; border-radius: 4px; }
+        .rc-qr-label { font-size: 10px; color: #555; letter-spacing: 3px; margin-top: 7px; }
+
+        .rc-footer { text-align: center; font-size: 11px; color: #555; line-height: 2; }
+        .rc-footer-thanks   { font-weight: 800; color: #d4af37; font-size: 13px; letter-spacing: 1px; margin-bottom: 2px; }
+        .rc-footer-official { font-size: 10px; color: #333; letter-spacing: 1px; margin-top: 6px; }
+
+        @media print {
+            body > *:not(#receipt-overlay) { display: none !important; }
+            #receipt-overlay { background: none !important; padding: 0 !important; }
+            #receipt-overlay > div:last-child { display: none !important; }
+            #receipt-overlay > div:first-child { box-shadow: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="site-nav"></div>
+
+    <div class="container py-5 my-5">
+        <div class="success-page-container">
+            <div class="success-box theme-card p-4 p-md-5 text-center position-relative">
+                
+                <!-- Sparkle Container -->
+                <div id="sparkles" class="sparkle-container"></div>
+                
+                <!-- Animated SVG Checkmark -->
+                <div class="success-animation-wrap">
+                    <svg class="checkmark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+
+                <h1 class="animate-fade-in anim-delay-1" style="font-size: 2.2rem; font-weight: 800; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px;">Order Successful</h1>
+                
+                <p class="animate-fade-in anim-delay-1 mb-5" style="color: var(--text-muted); font-size: 15px; max-width: 500px; margin: 0 auto 40px auto;">
+                    Thank you for shopping with Liquor Store. Your payment has been processed and your premium delivery is being prepared.
+                </p>
+
+                <!-- Receipt Box -->
+                <div id="receipt" class="receipt-box animate-fade-in anim-delay-2 mb-4">
+                    <p style="color: #aaa; text-align: center; margin: 0;">Loading receipt details...</p>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-5 animate-fade-in anim-delay-3">
+                    <button id="downloadBtn" class="btn btn-gold px-4 py-3" style="font-size: 13px;">
+                        <i class="fa fa-download me-2"></i> Download Receipt
+                    </button>
+                    <a href="index.html" class="btn btn-dark-outline px-4 py-3" style="font-size: 13px;">
+                        <i class="fa fa-shopping-bag me-2"></i> Continue Shopping
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer id="site-footer"></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/layout.js"></script>
+    <script src="js/success.js"></script>
+</body>
+</html>

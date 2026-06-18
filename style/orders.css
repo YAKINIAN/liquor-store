@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b0b;
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #111;
+    border-bottom: 1px solid gold;
+}
+
+.navbar a {
+    color: gold;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 30px;
+}
+
+.header h1 {
+    color: gold;
+}
+
+/* ORDERS */
+.orders-container {
+    padding: 20px;
+}
+
+/* ORDER CARD */
+.order {
+    background: #181818;
+    border: 1px solid #333;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 15px;
+    transition: 0.3s ease;
+}
+
+.order:hover {
+    border: 1px solid gold;
+    transform: translateY(-3px);
+}
+
+/* ORDER TOP */
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* ✅ vertical alignment fix */
+    margin-bottom: 10px;
+}
+
+/* STATUS */
+.status {
+    padding: 5px 12px;
+    border-radius: 20px; /* ✅ pill shape */
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.status.preparing {
+    background: blue;
+    color: white;
+}
+
+.status.on-the-way {
+    background: purple;
+    color: white;
+}
+
+.status.pending {
+    background: orange;
+    color: black;
+}
+
+.status.delivered {
+    background: green;
+    color: white;
+}
+
+.status.cancelled {
+    background: red;
+    color: white;
+}
+.delivery-info {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #aaa;
+}
+.date {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 3px;
+}
+/* PROGRESS BAR */
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #333;
+    border-radius: 5px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    transition: 0.5s;
+}
+
+/* STAGES */
+.progress.pending { width: 20%; background: orange; }
+.progress.preparing { width: 50%; background: blue; }
+.progress.on-the-way { width: 80%; background: purple; }
+.progress.delivered { width: 100%; background: green; }
+/* ITEMS */
+.order-items {
+    border-top: 1px solid #333;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: gold;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.3s;
+    z-index: 9999;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.tracking {
+    font-size: 13px;
+    color: #bbb;
+    margin-top: 8px;
+}
+
+/* TOTAL */
+.total {
+    text-align: right;
+    margin-top: 10px;
+    font-weight: bold;
+}
+#ordersCount {
+    background: gold;
+    color: black;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: 5px;
+    min-width: 18px;          /* ✅ keeps circle shape */
+    display: inline-block;
+    text-align: center;
+}
+.order-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.order-bottom button {
+    background: gold;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.order-bottom button:hover {
+    background: #ffd700;
+}

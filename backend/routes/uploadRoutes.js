@@ -31,7 +31,8 @@ const upload = multer({
 // POST /api/upload  (admin only)
 router.post("/", authMiddleware, adminMiddleware, upload.single("image"), (req, res) => {
     if (!req.file) return res.status(400).json({ message: "No file uploaded" });
-    const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    const protocol = req.get("x-forwarded-proto") || req.protocol;
+    const imageUrl = `${protocol}://${req.get("host")}/uploads/${req.file.filename}`;
     res.json({ url: imageUrl });
 });
 

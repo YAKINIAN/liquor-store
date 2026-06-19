@@ -53,7 +53,9 @@ function renderCart() {
     cart.forEach(item => {
         subtotal += item.price * item.qty;
         const imgSrc = item.image
-            ? (item.image.startsWith('http') ? item.image : item.image)
+            ? (item.image.startsWith('http') ? item.image
+                : item.image.startsWith('/uploads') ? API_BASE + item.image
+                : item.image)
             : 'assets/images/placeholder.png';
 
         // Use data-id attribute to avoid quoting issues with MongoDB string IDs

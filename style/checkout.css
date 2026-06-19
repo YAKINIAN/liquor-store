@@ -3,6 +3,7 @@ body{
     font-family: 'Segoe UI', sans-serif;
     background: #0f0f0f;
     color: #fff;
+    /* padding-top set by theme.css for fixed navbar */
 }
 
 /* CONTAINER LAYOUT */
@@ -34,8 +35,8 @@ form {
     width: 100%;
 }
 
-/* INPUTS */
-input, select {
+/* INPUTS — scoped to checkout form only */
+#checkoutForm input, #checkoutForm select {
     width: 100%;
     background: rgba(15, 15, 15, 0.7) !important;
     border: 1px solid rgba(212,175,55,0.2) !important;
@@ -49,7 +50,7 @@ input, select {
     transition: all 0.3s ease !important;
 }
 
-input:focus, select:focus {
+#checkoutForm input:focus, #checkoutForm select:focus {
     border-color: var(--gold) !important;
     box-shadow: 0 0 15px rgba(212,175,55,0.25) !important;
     background: rgba(7, 7, 7, 0.9) !important;
@@ -71,8 +72,8 @@ input:focus, select:focus {
     font-weight: bold;
 }
 
-/* BUTTON */
-button{
+/* BUTTON — scoped to checkout form only */
+#checkoutForm button{
     background: linear-gradient(135deg, #d4af37, #b38f2a);
     border: none;
     color: #111;
@@ -83,7 +84,7 @@ button{
     transition: 0.3s;
 }
 
-button:hover{
+#checkoutForm button:hover{
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(212,175,55,0.3);
 }

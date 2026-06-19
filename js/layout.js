@@ -160,10 +160,6 @@
             <div class="container">
                 <a href="${root}index.html" class="brand">🍷 LIQUOR STORE</a>
 
-                <button class="hamburger" id="navToggle" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
-
                 <ul class="nav-links" id="navLinks">
                     <li><a href="${root}index.html" ${!root ? 'class="active"' : ''}>Home</a></li>
                     <li><a href="${root}shop/shop.html">Shop</a></li>
@@ -191,6 +187,10 @@
                         <div class="nav-cart-dropdown" id="navCartDropdown"></div>
                     </div>
                 </div>
+
+                <button class="hamburger" id="navToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </nav>`;
 

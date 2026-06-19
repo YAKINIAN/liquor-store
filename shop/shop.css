@@ -63,6 +63,7 @@ body {
     top: 72px;
     align-self: flex-start;
     height: fit-content;
+    min-height: unset !important;
     z-index: 100;
 }
 

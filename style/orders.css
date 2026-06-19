@@ -5,21 +5,6 @@ body {
     color: white;
 }
 
-/* NAVBAR */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 30px;
-    background: #111;
-    border-bottom: 1px solid gold;
-}
-
-.navbar a {
-    color: gold;
-    margin-left: 15px;
-    text-decoration: none;
-}
-
 /* HEADER */
 .header {
     text-align: center;

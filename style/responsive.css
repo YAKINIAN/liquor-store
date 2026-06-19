@@ -1,97 +1,233 @@
+/* ===================================================
+   RESPONSIVE.CSS — Liquor Store
+   Mobile-first breakpoints. No appearance changes.
+   =================================================== */
+
 /* ===== GLOBAL ===== */
+*, *::before, *::after { box-sizing: border-box; }
 img { max-width: 100%; height: auto; }
 body { overflow-x: hidden; }
 
+/* Ensure all touch targets are at least 44px */
+button, a, input, select { touch-action: manipulation; }
+
 /* ===== NAVBAR ===== */
 @media (max-width: 991px) {
-    .nav-icons { justify-content: center; margin-top: 15px; padding-bottom: 10px; }
-    .navbar-nav { text-align: center; }
-    .nav-link { padding: 10px 0; }
-    .mega-menu { position: static; }
-    .search-container { justify-content: center; }
+    .site-nav .container { flex-wrap: wrap; gap: 10px; }
+    .site-nav .nav-right { gap: 12px; padding-right: 0; flex-wrap: nowrap; }
+    .site-nav .search-wrap input { width: 120px; }
+    .site-nav .search-wrap input:focus { width: 160px; }
+    /* Keep icons visible and aligned */
+    .site-nav .cart-btn,
+    .site-nav .account-btn { font-size: 18px; min-width: 32px; min-height: 32px; display: flex; align-items: center; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    .site-nav .search-wrap input { width: 100px; }
+    .site-nav .search-wrap input:focus { width: 130px; }
+    .site-nav .brand { font-size: 16px !important; }
+    .site-nav .nav-right { gap: 10px; }
 }
 
 /* ===== HERO SLIDER ===== */
 @media (max-width: 768px) {
-    .hero-img { height: 55vw; min-height: 240px; }
-    .custom-caption { bottom: 15%; text-align: center; padding: 0 15px; }
-    .custom-caption h1 { font-size: 22px !important; }
-    .custom-caption p { font-size: 13px; margin: 10px 0; }
-    .custom-caption .btn { padding: 8px 20px; font-size: 14px; }
+    .hero-slider { height: 60vw; min-height: 260px; max-height: 420px; }
+    .custom-caption {
+        left: 5% !important;
+        right: 5% !important;
+        transform: none !important;
+        width: auto !important;
+        max-width: 100% !important;
+        bottom: 10% !important;
+        padding: 16px !important;
+        text-align: center !important;
+    }
+    .custom-caption h1 { font-size: 1.4rem !important; margin-bottom: 8px !important; }
+    .custom-caption p { font-size: 13px !important; margin-bottom: 12px !important; }
+    .custom-caption .btn { padding: 9px 18px !important; font-size: 13px !important; }
+    .hero-prev, .hero-next { padding: 8px 12px; font-size: 16px; }
+}
+
+@media (max-width: 400px) {
+    .hero-slider { height: 70vw; min-height: 220px; }
+    .custom-caption h1 { font-size: 1.1rem !important; }
+    .custom-caption p { display: none; } /* hide subtitle on very small screens */
 }
 
 /* ===== CATEGORIES ===== */
 @media (max-width: 768px) {
-    .category-card img { height: 180px; }
-    .category-overlay h4 { font-size: 20px; }
-    .categories .text-center h2 { font-size: 24px !important; }
+    .category-card img { height: 160px; }
+    .category-overlay h4 { font-size: 18px; }
+    .categories .text-center h2 { font-size: 22px !important; }
 }
 
-/* ===== PRODUCT CARDS ===== */
+@media (max-width: 480px) {
+    .category-card img { height: 130px; }
+    .category-overlay h4 { font-size: 15px; }
+}
+
+/* ===== PRODUCT CARDS (home featured grid) ===== */
 @media (max-width: 768px) {
-    .product-image img { height: 200px; }
+    .product-image img { height: 180px; }
     .product-card { margin-bottom: 20px; }
-    .products .text-center h2 { font-size: 24px !important; }
+    .products .text-center h2,
+    .section-header h2 { font-size: 22px !important; }
+}
+
+@media (max-width: 480px) {
+    .product-image img { height: 150px; }
+}
+
+/* ===== PAGE HERO BANNER ===== */
+@media (max-width: 768px) {
+    .page-hero { padding: 50px 16px !important; }
+    .page-hero h1 { font-size: 1.8rem !important; }
+    .page-hero p { font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+    .page-hero { padding: 36px 14px !important; }
+    .page-hero h1 { font-size: 1.4rem !important; }
 }
 
 /* ===== PRODUCT DETAILS PAGE ===== */
 @media (max-width: 768px) {
-    .product-title { font-size: 28px !important; text-align: center; }
-    .product-price { font-size: 24px !important; text-align: center; }
-    .product-category { display: block; text-align: center; }
-    .product-description { text-align: center; }
-    .quantity-box { justify-content: center; }
-    .thumbnail-images { justify-content: center; flex-wrap: wrap; }
-    .main-image img { height: 280px; }
-    .d-flex.gap-3.mt-4 { flex-direction: column; }
+    .product-title { font-size: 22px !important; }
+    .product-price { font-size: 20px !important; }
+    .product-category { display: block; }
+    .thumbnail-images { justify-content: center; flex-wrap: wrap; gap: 8px; }
+    .main-image img { height: 240px; }
     .product-details { padding: 20px; margin-top: 15px; }
+    /* Stack add-to-cart buttons vertically */
+    .product-details .d-flex.gap-3.mt-4 { flex-direction: column; gap: 12px !important; }
+    .product-details .d-flex.gap-3.mt-4 .btn { width: 100%; }
+    .quantity-box { flex-wrap: nowrap; }
+    .quantity-box button { min-width: 40px; min-height: 40px; }
 }
 
 /* ===== CART PAGE ===== */
 @media (max-width: 768px) {
-    .cart-item { flex-direction: column; text-align: center; gap: 12px; }
+    /* Cart item: image left, text right — don't collapse to column, keeps it clean */
+    .cart-item { gap: 12px; }
+    .cart-img { width: 70px; height: 70px; flex-shrink: 0; }
+    .cart-section h2 { font-size: 22px; }
+    /* Quantity box centred */
+    .cart-item .quantity-box { flex-wrap: nowrap; }
+}
+
+@media (max-width: 480px) {
+    .cart-item { flex-direction: column; text-align: center; align-items: center; }
     .cart-img { width: 90px; height: 90px; }
-    .quantity-box { justify-content: center; }
-    .cart h2 { font-size: 24px; }
+    .cart-item .quantity-box { justify-content: center; }
 }
 
 /* ===== CHECKOUT PAGE ===== */
 @media (max-width: 768px) {
-    .col-lg-7, .col-lg-5 { padding: 25px 20px !important; }
-    .row { height: auto !important; }
+    .checkout-main-container { padding: 10px !important; }
+    .checkout-main-container .theme-card { padding: 20px !important; }
+    /* Order summary moves below billing on mobile — Bootstrap handles column stacking,
+       this just removes the top margin applied by mt-5 on desktop */
+    .checkout-main-container .mt-5.mt-lg-0 { margin-top: 20px !important; }
+    .payment-box { width: 90%; max-width: 320px; }
+}
+
+/* ===== SUCCESS PAGE ===== */
+@media (max-width: 480px) {
+    .success-box { width: 95% !important; max-width: 95% !important; padding: 28px 20px; }
 }
 
 /* ===== ORDERS PAGE ===== */
 @media (max-width: 768px) {
-    .order-bottom { flex-direction: column; gap: 10px; }
+    .order-top { flex-wrap: wrap; gap: 8px; }
+    .order-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .order-bottom button { width: 100%; }
+    .item { font-size: 13px; }
+}
+
+/* ===== OFFERS PAGE ===== */
+@media (max-width: 768px) {
+    .offer-card { padding: 20px !important; }
+    .offer-card .fs-1 { font-size: 2rem !important; }
+}
+
+/* ===== PROFILE PAGE ===== */
+@media (max-width: 600px) {
+    .profile-card {
+        margin: 30px 12px !important;
+        padding: 28px 20px !important;
+        max-width: 100% !important;
+    }
+    .profile-card .d-flex.gap-2 { flex-direction: column; }
+    .profile-card .d-flex.gap-2 .btn { width: 100%; }
 }
 
 /* ===== FOOTER ===== */
 @media (max-width: 768px) {
-    .footer { padding: 40px 0 20px; }
-    .footer h4 { font-size: 16px; }
-    .footer ul li { margin-bottom: 6px; }
+    .site-footer { padding: 40px 0 20px !important; }
+    .site-footer h5 { font-size: 14px; margin-bottom: 14px; }
+    .site-footer ul li { margin-bottom: 8px; }
+    .site-footer .socials { gap: 10px; flex-wrap: wrap; }
+    .site-footer .socials a { width: 34px; height: 34px; font-size: 15px; }
+    .footer-brand { font-size: 18px !important; }
 }
 
 /* ===== GENERAL TYPOGRAPHY ===== */
 @media (max-width: 768px) {
-    h1 { font-size: 30px !important; }
-    h2 { font-size: 24px !important; }
-    h3 { font-size: 20px !important; }
-    p { font-size: 14px; }
+    h1:not(.custom-caption h1):not(.page-hero h1):not(.brand h1) { font-size: 26px !important; }
+    h2 { font-size: 22px !important; }
+    h3 { font-size: 18px !important; }
 }
 
 /* ===== SHOP PAGE ===== */
+/* shop.html uses its own layout (display:flex with sidebar).
+   Override here for mobile so it stacks. */
 @media (max-width: 768px) {
-    .container { flex-direction: column; }
-    .sidebar { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; padding: 15px; }
-    .sidebar button { flex: 1; min-width: 80px; font-size: 13px; }
-    .products { padding: 10px; }
+    /* The .container in shop.css has display:flex, override it */
+    .products-area { min-width: 0; }
+    .sidebar h3 { font-size: 15px; margin-bottom: 12px; }
+}
+
+@media (max-width: 600px) {
+    /* Sidebar turns into horizontal filter strip */
+    .shop-layout-container,
+    body > .container:has(.sidebar) {
+        flex-direction: column !important;
+    }
+}
+
+/* ===== NAV CART DROPDOWN ===== */
+@media (max-width: 480px) {
+    .nav-cart-dropdown { width: 280px; right: -60px; }
+}
+
+@media (max-width: 360px) {
+    .nav-cart-dropdown { width: 260px; right: -80px; }
 }
 
 /* ===== ADMIN PANEL ===== */
-@media (max-width: 991px) {
-    .sidebar-nav { transform: translateX(-100%); }
-    .sidebar-nav.open { transform: translateX(0); }
-    .main-content { margin-left: 0 !important; }
+@media (max-width: 992px) {
+    .admin-wrapper .sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        width: 260px !important;
+    }
+    .admin-wrapper .sidebar.show { left: 0; }
+    .admin-wrapper .main { margin-left: 0 !important; }
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+}
+
+@media (max-width: 768px) {
+    .admin-wrapper .header { flex-direction: column; gap: 12px; text-align: center; }
+    .admin-wrapper .header h2 { font-size: 22px; }
+    .dashboard-cards { grid-template-columns: 1fr 1fr; }
+    .stat-card { padding: 16px; }
+    .stat-card h3 { font-size: 24px; }
+}
+
+@media (max-width: 480px) {
+    .dashboard-cards { grid-template-columns: 1fr; }
 }

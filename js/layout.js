@@ -210,8 +210,11 @@
 
         // Search on Enter or icon click
         function doNavSearch() {
-            const val = document.getElementById('navSearch')?.value.trim();
-            if (val) window.location.href = `${root}shop/shop.html?search=${encodeURIComponent(val)}`;
+            const input = document.getElementById('navSearch');
+            const val = input?.value.trim();
+            // On mobile the input is hidden — go straight to shop
+            if (!val) { window.location.href = `${root}shop/shop.html`; return; }
+            window.location.href = `${root}shop/shop.html?search=${encodeURIComponent(val)}`;
         }
         document.getElementById('navSearch')?.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') doNavSearch();

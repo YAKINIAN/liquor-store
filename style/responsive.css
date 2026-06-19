@@ -23,10 +23,27 @@ button, a, input, select { touch-action: manipulation; }
 }
 
 @media (max-width: 480px) {
-    .site-nav .search-wrap input { width: 100px; }
-    .site-nav .search-wrap input:focus { width: 130px; }
     .site-nav .brand { font-size: 16px !important; }
     .site-nav .nav-right { gap: 10px; }
+    /* Hide text input, keep only icon — avoids text/icon overlap */
+    .site-nav .search-wrap input {
+        width: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        opacity: 0;
+        pointer-events: none;
+        transition: none;
+    }
+    .site-nav .search-wrap i { position: static; transform: none; font-size: 18px; color: #ccc; }
+    /* Account dropdown: pin to right side of screen so it never gets clipped */
+    .site-nav .account-dropdown {
+        position: fixed !important;
+        top: 64px !important;
+        right: 12px !important;
+        left: auto !important;
+        width: 200px !important;
+        min-width: 0 !important;
+    }
 }
 
 /* ===== HERO SLIDER ===== */

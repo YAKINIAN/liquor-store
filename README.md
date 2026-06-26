@@ -126,21 +126,25 @@ Drag and drop the root folder (excluding `backend/`) into Netlify.
 
 ---
 
-## Default Admin
-
-Set in `.env` (defaults if not set):
-- **Email:** `admin@gmail.com`
-- **Password:** `12345`
-
-> ⚠️ Change before deploying to production.
-
----
-
 ## Screenshots
 
-> Add screenshots here
+<img width="1920" height="918" alt="Shop" src="https://github.com/user-attachments/assets/b3f8baed-4156-441c-a54a-4693b3f35480" />
+<img width="1920" height="916" alt="Offers" src="https://github.com/user-attachments/assets/55322a67-b132-4e19-adde-753ec5dcfacc" />
+<img width="1920" height="918" alt="My Orders" src="https://github.com/user-attachments/assets/2e0f696e-dfef-4e8f-9d05-6a9e731565e1" />
+<img width="1920" height="914" alt="Home page 4" src="https://github.com/user-attachments/assets/d1f72c80-bb60-43cc-a503-514bffaade05" />
+<img width="1920" height="918" alt="Home page 3" src="https://github.com/user-attachments/assets/027026b1-f618-464f-a037-8f2b3f5b8e96" />
+<img width="1920" height="921" alt="Home page 2" src="https://github.com/user-attachments/assets/7004c3cb-aa1e-4cad-9892-36ba28bf9d92" />
+<img width="1920" height="913" alt="Home page 1" src="https://github.com/user-attachments/assets/66146d93-e6b4-4ee8-8f5b-4aba71212afe" />
+<img width="1920" height="913" alt="Checkout" src="https://github.com/user-attachments/assets/bdebfb60-ab6c-4d44-9180-ca6d241c035b" />
+<img width="1920" height="916" alt="Cart" src="https://github.com/user-attachments/assets/74921f78-3cec-487c-927a-7dad5a522291" />
+<img width="1920" height="889" alt="Admin-Users" src="https://github.com/user-attachments/assets/93b263fc-b288-4951-9c27-d30bb6730f06" />
+<img width="1920" height="909" alt="Admin-Products" src="https://github.com/user-attachments/assets/18f5713b-abca-4534-9bef-994de2edb00a" />
+<img width="1920" height="895" alt="Admin-Orders" src="https://github.com/user-attachments/assets/0f3cf5bb-7d29-4735-b879-dfb5a625927f" />
+<img width="1920" height="904" alt="Admin-Dashboard" src="https://github.com/user-attachments/assets/b24cae59-217f-4dad-8df6-2546dd14d5d8" />
+<img width="1920" height="896" alt="Admin-Categories" src="https://github.com/user-attachments/assets/7262ba2b-dde5-4584-bc9e-832fc933f084" />
 
----
+
+
 
 ## License
 
